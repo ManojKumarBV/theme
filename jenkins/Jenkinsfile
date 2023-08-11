@@ -4,7 +4,7 @@ pipeline {
         CI = 'true'
     }
     stages {
-        stage('Build') {
+        stage('Dependecies') {
             steps {
                 sh 'npm install next@latest react@latest react-dom@latest'
             }
@@ -14,11 +14,14 @@ pipeline {
         //         sh './jenkins/scripts/test.sh'
         //     }
         // }
-        stage('Deliver') {
+        stage('Build') {
             steps {
-                sh './jenkins/scripts/deliver.sh'
-                input message: 'Finished using the website? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/kill.sh'
+                sh 'next build'
+            }
+        }
+         stage('Deliver') {
+            steps {
+                sh 'next start'
             }
         }
     }
