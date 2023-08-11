@@ -10,7 +10,8 @@ import lightIcon from '../assets/light.png';
 
 const Navbar: React.FC = () => {
   const { theme, setTheme } = useTheme();
-
+  console.log(theme);
+  
   return (
     <header className='h-14 shadow-xl mb-12'>
       <div className='flex justify-between max-w-7xl h-full items-center mx-auto'>
